@@ -47,10 +47,6 @@
                         <label for="userBasicDetails_gender">{{'userBasicDetails_gender' |  translate}}</label>
                         <input type="text" class="form-control" id="userBasicDetails_gender" placeholder="">
                     </div>
-                </form>
-            </div>
-            <div class="col-md-3">
-                <form name="advancedDetails">
                     <div class="form-group">
                         <label style="display: block" for="userAdvDetails_miluimQuestion">  {{'userAdvDetails_miluimQuestion' |  translate}}</label>
                         <input type="radio" name="userAdvDetails_miluimQuestion_yes" ng-value="true" ng-model="formData.miluimQuestion">
@@ -226,14 +222,321 @@
                     </div>
                     <div ng-if="formData.jobDetails_salary_fundingQuestion" class="form-group">
                         <label style="display: block" for="jobDetails_salary_fundingSourceQuestion">{{'jobDetails_salary_fundingSourceQuestion' |  translate}}</label>
-                        <input  type="radio" name="jobDetails_salary_fundingQuestion_yes" value="{{'jobDetails_salary_fundingSourceAnswer1' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
-                        {{'jobDetails_salary_fundingSourceAnswer1' |  translate}}
-                        <input type="radio" name="jobDetails_salary_fundingQuestion_no" value="{{'jobDetails_salary_fundingSourceAnswer2' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
-                        {{'jobDetails_salary_fundingSourceAnswer2' |  translate}}
+                        <div>
+                            <input  type="radio" name="jobDetails_salary_fundingSourceAnswer1" value="{{'jobDetails_salary_fundingSourceAnswer1' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                            {{'jobDetails_salary_fundingSourceAnswer1' |  translate}}
+                        </div>
+                        <div>
+                            <input type="radio" name="jobDetails_salary_fundingSourceAnswer2" value="{{'jobDetails_salary_fundingSourceAnswer2' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                            {{'jobDetails_salary_fundingSourceAnswer2' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="jobDetails_salary_fundingSourceAnswer3" value="{{'jobDetails_salary_fundingSourceAnswer3' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                            {{'jobDetails_salary_fundingSourceAnswer3' |  translate}}
+                        </div>
+                       <div>
+                           <input type="radio" name="jobDetails_salary_fundingSourceAnswer4" value="{{'jobDetails_salary_fundingSourceAnswer4' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                           {{'jobDetails_salary_fundingSourceAnswer4' |  translate}}
+                       </div>
+                       <div>
+                           <input  type="radio" name="jobDetails_salary_fundingSourceAnswer5" value="{{'jobDetails_salary_fundingSourceAnswer5' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                           {{'jobDetails_salary_fundingSourceAnswer5' |  translate}}
+                       </div>
+                        <div>
+                            <input type="radio" name="jobDetails_salary_fundingSourceAnswer6" value="{{'jobDetails_salary_fundingSourceAnswer6' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                            {{'jobDetails_salary_fundingSourceAnswer6' |  translate}}
+                        </div>
+                        <div>
+                            <input type="radio" name="jobDetails_salary_fundingSourceAnswer7" value="{{'jobDetails_salary_fundingSourceAnswer7' |  translate}}" ng-model="formData.jobDetails_salary_fundingSourceQuestion">
+                            {{'jobDetails_salary_fundingSourceAnswer7' |  translate}}
+                        </div>
+                        <input ng-if="formData.jobDetails_salary_fundingSourceQuestion == keyWordOther" type="text" class="form-control" id="jobDetails_salary_fundingSourceAnswer7" placeholder="">
+                        <p ng-if="formData.jobDetails_salary_fundingSourceQuestion == keyWordOther"> {{'jobDetails_salary_fundingSourceAnswerComment' | translate}}</p>
                     </div>
                 </form>
             </div>
+            <div ng-hide="true" class="col-md-3">
+                <form name="familyStatus">
+                    <div class="form-group">
+                        <label for="family_status_title">{{'family_status_title' |  translate}}</label>
+                        <div>
+                            <input  type="radio" name="family_status_answer_single" value="{{'family_status_answer_single' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_single' |  translate}}
+                        </div>
+                        <div>
+                            <input type="radio" name="family_status_answer_married" value="{{'family_status_answer_married' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_married' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="family_status_answer_divorced" value="{{'family_status_answer_divorced' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_divorced' |  translate}}
+                        </div>
+                        <div>
+                            <input type="radio" name="family_status_answer_widow" value="{{'family_status_answer_widow' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_widow' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="family_status_answer_children" value="{{'family_status_answer_children' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_children' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="family_status_answer_divorced_children" value="{{'family_status_answer_divorced_children' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_divorced_children' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="family_status_answer_single_parent" value="{{'family_status_answer_single_parent' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'family_status_answer_single_parent' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="familiyStatus_other" value="{{'jobDetails_salary_fundingSourceAnswer7' |  translate}}" ng-model="formData.marriedStatus">
+                            {{'jobDetails_salary_fundingSourceAnswer7' |  translate}}
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_divorced" class="form-group">
+                            <label for="family_status_answer_divorced_payed_title">{{'family_status_answer_divorced_payed_title' |  translate}}</label>
+                            <div>
+                                <input  type="radio" name="family_status_answer_divorced_comment_pay" value="{{'family_status_answer_divorced_comment_pay' |  translate}}" ng-model="formData.paying">
+                                {{'family_status_answer_divorced_comment_pay' |  translate}}
+                            </div>
+                            <div>
+                                <input  type="radio" name="family_status_answer_divorced_comment_payed" value="{{'family_status_answer_divorced_comment_payed' |  translate}}" ng-model="formData.paying">
+                                {{'family_status_answer_divorced_comment_payed' |  translate}}
+                            </div>
 
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_divorced" class="form-group">
+                            <label for="family_status_answer_divorced_comment_amount">{{'family_status_answer_divorced_comment_amount' |  translate}}</label>
+                            <input type="text" class="form-control" id="jobDetails_salary_depths_time" placeholder="">
+                            <p> {{'family_status_answer_divorced_comment_lawer' | translate}}</p>
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group">
+                            <label for="family_status_answer_children_comment">{{'family_status_answer_children_comment' |  translate}}</label>
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_age">{{'family_status_answer_children_comment_age' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_age" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_age">{{'family_status_answer_children_comment_age' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_age" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_age">{{'family_status_answer_children_comment_age' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_age" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_age">{{'family_status_answer_children_comment_age' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_age" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus == family_status_answer_children" class="form-group col-md-6">
+                            <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                        </div>
+                        <div ng-if="formData.marriedStatus ==  family_status_answer_divorced_children" class="form-group">
+                            <p>{{'family_status_answer_divorced_children_comment' | translate}}  </p>
+                        </div>
+                        <div ng-if="formData.marriedStatus ==  keyWordOther" class="form-group">
+                            <label for="fundingSourceAnswer7">{{'jobDetails_salary_fundingSourceAnswer7' |  translate}}</label>
+                            <input type="text" class="form-control" id="fundingSourceAnswer7" placeholder="">
+                        </div>
+                        <h4> {{'family_status_partner_for_life' | translate}} </h4>
+                        <div  class="form-group">
+                            <label for="family_status_partner_for_life_id">{{'family_status_partner_for_life_id' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_id" placeholder="">
+                        </div>
+                        <div  class="form-group">
+                            <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                        </div>
+                        <div  class="form-group">
+                            <label for="family_status_partner_for_life_job">{{'family_status_partner_for_life_job' |  translate}}</label>
+                            <div>
+                                <input  type="radio" name="family_status_partner_for_life_answer1" value="{{'family_status_partner_for_life_answer1' |  translate}}" ng-model="formData.partnerForLifeJob">
+                                {{'family_status_partner_for_life_answer1' |  translate}}
+                            </div>
+                            <div>
+                                <input  type="radio" name="family_status_partner_for_life_answer2" value="{{'family_status_partner_for_life_answer2' |  translate}}" ng-model="formData.partnerForLifeJob">
+                                {{'family_status_partner_for_life_answer2' |  translate}}
+                            </div>
+                            <div>
+                                <input  type="radio" name="family_status_partner_for_life_side_job" value="{{'family_status_partner_for_life_side_job' |  translate}}" ng-model="formData.partnerForLifeJob">
+                                {{'family_status_partner_for_life_side_job' |  translate}}
+                            </div>
+                            <div>
+                                <input  type="radio" name="family_status_partner_for_life_job_student" value="{{'family_status_partner_for_life_job_student' |  translate}}" ng-model="formData.partnerForLifeJob">
+                                {{'family_status_partner_for_life_job_student' |  translate}}
+                            </div>
+                            <div>
+                                <input  type="radio" name="family_status_partner_for_life_job_not_working" value="{{'family_status_partner_for_life_job_not_working' |  translate}}" ng-model="formData.partnerForLifeJob">
+                                {{'family_status_partner_for_life_job_not_working' |  translate}}
+                            </div>
+                        </div>
+                        <div  ng-if="formData.partnerForLifeJob != family_status_partner_for_life_job_not_working" class="form-group">
+                            <label for="family_status_partner_for_life_job_location">{{'family_status_partner_for_life_job_location' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_job_location" placeholder="">
+                        </div>
+                        <div  ng-if="formData.partnerForLifeJob == family_status_partner_for_life_answer2 || formData.partnerForLifeJob == family_status_partner_for_life_answer1" class="form-group">
+                            <label for="family_status_partner_for_life_job_pay">{{'family_status_partner_for_life_job_pay' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_job_pay" placeholder="">
+                            <p> {{'family_status_partner_for_life_job_pay_comment' | translate}}</p>
+                        </div>
+                        <div  ng-if="formData.partnerForLifeJob == family_status_partner_for_life_side_job" class="form-group">
+                            <label for="family_status_partner_for_life_side_job_mount">{{'family_status_partner_for_life_side_job_mount' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_side_job_mount" placeholder="">
+                        </div>
+                        <div  ng-if="formData.partnerForLifeJob == family_status_partner_for_life_side_job" class="form-group">
+                            <label for="family_status_partner_for_life_side_job_mount">{{'family_status_partner_for_life_side_job_mount' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_side_job_mount" placeholder="">
+                        </div>
+                        <div  ng-if="formData.partnerForLifeJob == family_status_partner_for_life_job_not_working" class="form-group">
+                            <label for="family_status_partner_for_life_job_not_working_explain">{{'family_status_partner_for_life_job_not_working_explain' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_job_not_working_explain" placeholder="">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3">
+                <form name="studentLivingHome">
+                    <h3> {{'studentLivingHome_title' | translate}}  </h3>
+                    <h4> {{'studentLivingHome_address' | translate}} </h4>
+                    <div   class="form-group">
+                        <label for="studingDetails_city">{{'studingDetails_city' |  translate}}</label>
+                        <input type="text" class="form-control" id="studingDetails_city" placeholder="">
+                    </div>
+                    <div   class="form-group">
+                        <label for="studingDetails_address">{{'studingDetails_address' |  translate}}</label>
+                        <input type="text" class="form-control" id="studingDetails_address" placeholder="">
+                    </div>
+                    <div   class="form-group">
+                        <label for="studingDetails_zip">{{'studingDetails_zip' |  translate}}</label>
+                        <input type="text" class="form-control" id="studingDetails_zip" placeholder="">
+                    </div>
+                    <div   class="form-group">
+                        <label for="general_phone">{{'general_phone' |  translate}}</label>
+                        <input type="text" class="form-control" id="general_phone" placeholder="">
+                    </div>
+                    <h4> {{'studentLivingHome_parents_details' | translate}} </h4>
+                    <div class="col-md-6">
+                            <h4 for="studentLivingHome_parents_details_mother">{{'studentLivingHome_parents_details_mother' |  translate}}</h4>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_details_mother_working" value="{{'studentLivingHome_parents_details_mother_working' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_details_mother_working' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_details_mother_independent" value="{{'studentLivingHome_parents_details_mother_independent' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_details_mother_independent' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_details_mother_pension" value="{{'studentLivingHome_parents_details_mother_pension' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_details_mother_pension' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_job_movtal" value="{{'studentLivingHome_parents_job_movtal' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_job_movtal' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_job_diss_mother" value="{{'studentLivingHome_parents_job_diss_mother' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_job_diss_mother' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_status_divorced_mother" value="{{'studentLivingHome_parents_status_divorced_mother' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_status_divorced_mother' |  translate}}
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_details_mother_working || formData.fatherJob == studentLivingHome_parents_details_mother_independent" class="form-group">
+                            <label for="family_status_partner_for_life_job_location">{{'family_status_partner_for_life_job_location' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_job_location" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_details_mother_working || formData.fatherJob == studentLivingHome_parents_details_mother_independent" class="form-group">
+                            <label for="studentLivingHome_parents_status_monthly_incoming">{{'studentLivingHome_parents_status_monthly_incoming' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_status_monthly_incoming" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_job_diss_mother" class="form-group">
+                            <label for="studentLivingHome_parents_job_diss_date">{{'studentLivingHome_parents_job_diss_date' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_job_diss_date" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_status_divorced_mother" class="form-group">
+                            <label for="studentLivingHome_parents_status_divorced_date">{{'studentLivingHome_parents_status_divorced_date' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_status_divorced_date" placeholder="">
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-6">
+                            <h4 for="studentLivingHome_parents_details_father">{{'studentLivingHome_parents_details_father' |  translate}}</h4>
+                        <div>
+                            <input  type="radio" name="family_status_father_for_life_answer1" value="{{'family_status_partner_for_life_answer1' |  translate}}" ng-model="formData.fatherJob">
+                            {{'family_status_partner_for_life_answer1' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="family_status_father_for_life_answer2" value="{{'family_status_partner_for_life_answer2' |  translate}}" ng-model="formData.fatherJob">
+                            {{'family_status_partner_for_life_answer2' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_job_pension" value="{{'studentLivingHome_parents_job_pension' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_job_pension' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_job_movtal" value="{{'studentLivingHome_parents_job_movtal' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_job_movtal' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_job_diss" value="{{'studentLivingHome_parents_job_diss' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_job_diss' |  translate}}
+                        </div>
+                        <div>
+                            <input  type="radio" name="studentLivingHome_parents_status_divorced_father" value="{{'studentLivingHome_parents_status_divorced_father' |  translate}}" ng-model="formData.fatherJob">
+                            {{'studentLivingHome_parents_status_divorced_father' |  translate}}
+                        </div>
+                        <div  ng-if="formData.fatherJob == family_status_partner_for_life_answer1 || formData.fatherJob == family_status_partner_for_life_answer2" class="form-group">
+                            <label for="family_status_partner_for_life_job_location">{{'family_status_partner_for_life_job_location' |  translate}}</label>
+                            <input type="text" class="form-control" id="family_status_partner_for_life_job_location" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == family_status_partner_for_life_answer1 || formData.fatherJob == family_status_partner_for_life_answer2" class="form-group">
+                            <label for="studentLivingHome_parents_status_monthly_incoming">{{'studentLivingHome_parents_status_monthly_incoming' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_status_monthly_incoming" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_job_diss" class="form-group">
+                            <label for="studentLivingHome_parents_job_diss_date">{{'studentLivingHome_parents_job_diss_date' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_job_diss_date" placeholder="">
+                        </div>
+                        <div  ng-if="formData.fatherJob == studentLivingHome_parents_status_divorced_father" class="form-group">
+                            <label for="studentLivingHome_parents_status_divorced_date">{{'studentLivingHome_parents_status_divorced_date' |  translate}}</label>
+                            <input type="text" class="form-control" id="studentLivingHome_parents_status_divorced_date" placeholder="">
+                        </div>
+
+                    </div>
+                    <p style="margin-top: 15px"> {{'studentLivingHome_parents_job_comment' | translate}}</p>
+
+                    <h4> {{'studentLivingHome_parents_number_of_people_title' | translate}}</h4>
+                    <div class="col-md-3">
+                        <label for="studentLivingHome_parents_number_of_people_current_studing_place">{{'studentLivingHome_parents_number_of_people_current_studing_place' |  translate}}</label>
+                        <input type="text" class="form-control" id="studentLivingHome_parents_number_of_people_current_studing_place" placeholder="">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="general_birthDate">{{'general_birthDate' |  translate}}</label>
+                        <input type="text" class="form-control" id="general_birthDate" placeholder="">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="family_status_answer_children_comment_name">{{'family_status_answer_children_comment_name' |  translate}}</label>
+                        <input type="text" class="form-control" id="family_status_answer_children_comment_name" placeholder="">
+                    </div>
+
+
+
+                </form>
+            </div>
 
 
         </div>
