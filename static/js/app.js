@@ -3,10 +3,31 @@
  */
 
 
-angular.module('app', ['pascalprecht.translate'])
+angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
     .config(function($translateProvider) {
         $translateProvider.translations('heb', {
-            userBasicDetails_id: 'ת.ז. - כולל ספרת ביקורת',
+            pageTitle:'שאלון בקשת מלגה עמותת גדס"ר גולני',
+            StudingPageTitle:'כתובת מגורים בזמן הלימודים (חובה לצרף צילום של תעודת זהות)',
+            armyServiceTitle:'שירות צבאי: (יש לצרף צילום של תעודת מילואים / שחרור)',
+            armyServiceJoiningDate:'תאריך גיוס',
+            armyServiceReleasingDate:'תאריך שחרור',
+            armyServicePtor:'פטור (פרט)',
+            armyServicePersenalNumber:"מס' אישי",
+            pageComments:'.אנא הקפד/י למלא ולצרף את הפרטים כמבוקש',
+            pageCommentPage1:':המלגות יינתנו לפי',
+            pageCommentPage2:' מצב סוציו-אקונומי. *',
+            pageCommentPage3:'הענקת מלגה נתונה להחלטה בלעדית של ועדת המלגות של עמותת הגדסר בלבד *',
+            pageCommentPage4:':הוראות למילוי השאלון',
+            pageCommentPage5:'קרא/י בעיון את ההנחיות.',
+            pageCommentPage6:'.יש למלא את השאלון בכתב יד קריא וברור *',
+            pageCommentPage7:'.יש להקיף בעיגול את התשובה הנכונה, או לכתוב את התשובה במילים במקום המיועד לכך *',
+            pageCommentPage8:'.לצרף את המסמכים המתבקשים בהתאם לסעיפים. ניתן לצרף מכתב עם תוספת פרטים אשר אינם כלולים בשאלון והנך מוצא/ת לנכון לפרטם *',
+            pageCommentPage9:'.ידוע לי כי במידה ויתגלה כי הפרטים שמסרתי אינם נכונים או חלקיים ובגינם קיבלתי מלגה, שאינה עומדת בקריטריונים, הנני מתחייב/ת בזאת להחזיר את מלוא סכום המלגה *',
+            pageCommentPage10:'.הועדה לא תדון במועמד/ת ששכר הלימוד שלו ממומן במלואו על ידי גורם אחר *',
+            pageCommentPage11:'.לא ניתן לערער על החלטת הועדה לגבי זכאות למלגה *',
+            pageCommentPage12:'.שאלון שלא ימולא כראוי ובהתאם להנחיות ולא יצורפו אליו כל האישורים  הנדרשים- יבוטל ולא תתקבל זכות ערעור *',
+            pageCommentPage13:'.סטודנט שבעת חלוקת המלגות חייב כסף, סכום המלגה יקוזז מן החוב *',
+            userBasicDetails_id: '* ת.ז. - כולל ספרת ביקורת',
             userBasicDetails_bornCountry: ' ארץ לידה',
             userBasicDetails_fullName: 'שם + שם משפחה',
             userBasicDetails_birthYear: 'שנת לידה',
@@ -17,6 +38,8 @@ angular.module('app', ['pascalprecht.translate'])
             userAdvDetails_miluimQuestion: 'האם במהלך השנה האחרונה שירתת במילואים?',
             general_yes: 'כן',
             general_no: 'לא',
+            general_male:'זכר',
+            general_female:'נקבה',
             general_phone: 'טלפון',
             general_birthDate: 'תאריך לידה',
             general_howManyTimes: 'כמה פעמים ?',
@@ -119,7 +142,7 @@ angular.module('app', ['pascalprecht.translate'])
             studentLivingHome_parents_number_of_people_current_studing_place: 'לא עובדת ',
             studentLivingHome_parents_number_of_people_current_studing_place: 'מקום לימודים נוכחי',
             studentLivingHome_parents_status_not_working_mother: 'לא עובדת ',
-            INTRO_TEXT: 'And it has i18n support!'
+            submitButtonText: 'שליחת הטופס'
         });
         $translateProvider.preferredLanguage('heb');
 })
@@ -141,7 +164,9 @@ angular.module('app', ['pascalprecht.translate'])
             'studentLivingHome_parents_status_divorced_mother',
             'studentLivingHome_parents_details_mother_independent',
         'studentLivingHome_parents_details_mother_working',
-        'studentLivingHome_parents_job_diss_mother']).then(function (translations) {
+        'studentLivingHome_parents_job_diss_mother',
+        'general_yes',
+        'general_no']).then(function (translations) {
 
             $scope.keyWordOther = translations.jobDetails_salary_fundingSourceAnswer7;
             $scope.family_status_answer_divorced = translations.family_status_answer_divorced;
@@ -157,8 +182,27 @@ angular.module('app', ['pascalprecht.translate'])
             $scope.studentLivingHome_parents_details_mother_independent = translations.studentLivingHome_parents_details_mother_independent;
             $scope.studentLivingHome_parents_details_mother_working = translations.studentLivingHome_parents_details_mother_working;
             $scope.studentLivingHome_parents_job_diss_mother = translations.studentLivingHome_parents_job_diss_mother;
+            $scope.general_yes = translations.general_yes;
+            $scope.general_no = translations.general_no;
         });
 
+        $scope.openCalendar = function($event , calendar) {
+            $event.preventDefault();
+            $event.stopPropagation();
+            $scope[calendar] = true;
+        };
 
+        $scope.submitMe = function(formData){
+            console.log($scope.formData);
+            console.log(formData);
+        }
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[1];
 
     }]);
