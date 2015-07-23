@@ -4,6 +4,18 @@
 
 
 angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
+    .directive('shortcut', function() {
+    return {
+        restrict: 'E',
+        replace: true,
+        scope: true,
+        link:    function postLink(scope, iElement, iAttrs){
+            jQuery(document).on('keypress', function(e){
+                scope.$apply(scope.keyPressed(e));
+            });
+        }
+    };
+})
     .config(function($translateProvider) {
         $translateProvider.translations('heb', {
             pageTitle:'שאלון בקשת מלגה עמותת גדס"ר גולני',
@@ -149,7 +161,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
     .controller('appCtrl', ['$scope', '$timeout' , '$http' , '$translate', function($scope,$timeout,$http,$translate) {
 
     $scope.formData = {};
-
+    var restCallManager = new RestCallManager();
 
         $translate(['family_status_answer_children',
             'family_status_answer_divorced',
@@ -192,7 +204,23 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             $scope[calendar] = true;
         };
 
+        $scope.keyPressed = function(e) {
+            $scope.keyCode = e.which;
+           if($scope.keyCode == 13){
+               $scope.submitMe($scope.formData);
+           }
+        };
+
         $scope.submitMe = function(formData){
+            restCallManager.post(submitFormCallback , $http, $scope.formData , "submitForm");
+            function submitFormCallback(result , status , success) {
+                if (success) {
+                    console.log(result);
+
+                } else {
+                    console.log("Error Getting Campaign Type " + status);
+                }
+            }
             console.log($scope.formData);
             console.log(formData);
         }
@@ -204,5 +232,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
 
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[1];
+
+
 
     }]);
