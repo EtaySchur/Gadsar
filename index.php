@@ -66,7 +66,8 @@
     <form name="userBasicDetails">
         <div class="form-group col-md-3 col-sm-12">
             <label for="userBasicDetails_id">{{'userBasicDetails_id' | translate}}</label>
-            <input type="text" ng-model="formData.userId"class="form-control" id="userBasicDetails_id" placeholder="">
+            <input ng-class="{'error': submitted && userBasicDetails.userId.$invalid}" name="userId" type="text" ng-model="formData.userId"class="form-control" id="userBasicDetails_id" placeholder="" required>
+            <p class="errorText" ng-show="submitted && userBasicDetails.userId.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
         <div class="form-group col-md-3 col-sm-12">
             <label for="userBasicDetails_bornCountry">{{'userBasicDetails_bornCountry' | translate}}</label>
@@ -74,18 +75,21 @@
         </div>
         <div class="form-group col-md-3 col-sm-12">
             <label for="userBasicDetails_fullName">{{'userBasicDetails_fullName' | translate}}</label>
-            <input type="text" ng-model="formData.userFullName" class="form-control" id="userBasicDetails_fullName" placeholder="">
+            <input ng-class="{'error': submitted && userBasicDetails.userFullName.$invalid}" type="text" name="userFullName" ng-model="formData.userFullName" class="form-control" id="userBasicDetails_fullName" placeholder="" required>
+            <p class="errorText" ng-show="submitted && userBasicDetails.userFullName.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
         <div class="form-group col-md-2 col-sm-12">
             <label for="userBasicDetails_birthYear">{{'userBasicDetails_birthYear' | translate}}</label>
-            <input type="text" ng-model="formData.userBornYear" class="form-control" id="userBasicDetails_birthYear" placeholder="">
+            <input ng-class="{'error': submitted && userBasicDetails.userBornYear.$invalid}" type="text" name="userBornYear" ng-model="formData.userBornYear" class="form-control" id="userBasicDetails_birthYear" placeholder="" required>
+            <p class="errorText" ng-show="submitted && userBasicDetails.userBornYear.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
         <div class="form-group col-md-1 col-sm-12">
             <label style="display: block" for="userBasicDetails_gender">{{'userBasicDetails_gender' | translate}}</label>
-            <input type="radio" name="general_male" value="{{'general_male' |  translate}}" ng-model="formData.gender">
+            <input  type="radio"  name="gender" value="{{'general_male' |  translate}}" ng-model="formData.gender" required>
             {{'general_male' | translate}}
-            <input type="radio" name="general_female" value="{{'general_female' |  translate}}" ng-model="formData.gender">
+            <input type="radio" name="gender" value="{{'general_female' |  translate}}" ng-model="formData.gender" required>
             {{'general_female' | translate}}
+            <p class="errorText" ng-show="submitted && userBasicDetails.gender.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
         <h4 class='col-md-12 col-sm-12'>{{'armyServiceTitle' | translate}}</h4>
 

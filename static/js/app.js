@@ -48,6 +48,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             userAdvDetails_abroadQuestion: 'האם במהלך השנה האחרונה שהית בחו"ל?',
             userAdvDetails_numberOfDays: "מס' ימים ?",
             userAdvDetails_miluimQuestion: 'האם במהלך השנה האחרונה שירתת במילואים?',
+            general_requieredFieldAlertText:'שדה חובה',
             general_yes: 'כן',
             general_no: 'לא',
             general_male:'זכר',
@@ -212,17 +213,23 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
         };
 
         $scope.submitMe = function(formData){
-            restCallManager.post(submitFormCallback , $http, $scope.formData , "submitForm");
-            function submitFormCallback(result , status , success) {
-                if (success) {
-                    console.log(result);
+            if($scope.userBasicDetails.$invalid){
+                $scope.submitted = true;
+            }else{
+                restCallManager.post(submitFormCallback , $http, $scope.formData , "submitForm");
+                function submitFormCallback(result , status , success) {
+                    if (success) {
+                        console.log(result);
 
-                } else {
-                    console.log("Error Getting Campaign Type " + status);
+                    } else {
+                        console.log("Error Getting Campaign Type " + status);
+                    }
                 }
+                console.log($scope.formData);
+                console.log(formData);
             }
-            console.log($scope.formData);
-            console.log(formData);
+
+
         }
 
         $scope.dateOptions = {
