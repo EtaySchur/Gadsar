@@ -124,7 +124,7 @@
             <label style="display: block" for="userAdvDetails_miluimQuestion"> {{'userAdvDetails_miluimQuestion' | translate}}</label>
             <input type="radio" name="userAdvDetails_miluimQuestion_yes" value="{{'general_yes' | translate}}" ng-model="formData.miluimQuestion">
             {{'general_yes' | translate}}
-            <input type="radio" name="userAdvDetails_miluimQuestion_no" ng-model="formData.hasJobQuestion" ng-model="formData.miluimQuestion">
+            <input type="radio" name="userAdvDetails_miluimQuestion_no" value="{{'general_no' | translate}}" ng-model="formData.miluimQuestion">
             {{'general_no' | translate}}
         </div>
         <div ng-if="formData.miluimQuestion" class="form-group col-md-3 col-sm-12">
