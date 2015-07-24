@@ -231,15 +231,12 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
                 function submitFormCallback(result , status , success) {
                     if (success) {
                         $scope.openSuccessModal();
+                        $scope.formData = {};
                     } else {
                         $scope.openFailModal();
                     }
                 }
-                console.log($scope.formData);
-                console.log(formData);
             }
-
-
         }
 
 
