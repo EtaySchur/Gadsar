@@ -20,6 +20,9 @@ if (($_POST) || (isset($_POST))) {
                             $result = DbManager::insertToDb("forms" , $request->data);
                             echo json_encode($result);
                             exit;
+        case "getForms" : $result = DbManager::getForms();
+                          echo json_encode($result);
+                          exit;
     }
 }
 ?>

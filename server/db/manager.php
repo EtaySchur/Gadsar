@@ -22,6 +22,16 @@ class DbManager {
 		return $pdo;
 	}
 
+    public static function getForms(){
+        $conn = self::connectToDb();
+        $sql = $conn->prepare("SELECT * from `forms`");
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        exit;
+
+    }
+
 
     /* Generic Section */
 
