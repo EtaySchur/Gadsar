@@ -94,17 +94,28 @@
         </div>
         <h4 class='col-md-12 col-sm-12'>{{'armyServiceTitle' | translate}}</h4>
         <div class="form-group col-md-12 col-sm-12">
-            <label style="display: block" for="userBasicDetails_unti">{{'whichUnitQuestion' | translate}}</label>
-            <input  type="radio"  name="whichUnitAnswerPalsar" value="{{'whichUnitAnswerPalsar' |  translate}}" ng-model="formData.unit">
-            {{'whichUnitAnswerPalsar' | translate}}
-            <input type="radio" name="whichUnitAnswerOrev" value="{{'whichUnitAnswerOrev' |  translate}}" ng-model="formData.unit">
-            {{'whichUnitAnswerOrev' | translate}}
-            <input type="radio" name="whichUnitAnswerHan" value="{{'whichUnitAnswerHan' |  translate}}" ng-model="formData.unit">
-            {{'whichUnitAnswerHan' | translate}}
-            <input type="radio" name="whichUnitAnswerMifkadaFighter" value="{{'whichUnitAnswerMifkadaFighter' |  translate}}" ng-model="formData.unit">
-            {{'whichUnitAnswerMifkadaFighter' | translate}}
-            <input type="radio" name="whichUnitAnswerMifkadaFighterSupport" value="{{'whichUnitAnswerMifkadaFighterSupport' |  translate}}" ng-model="formData.unit">
-            {{'whichUnitAnswerMifkadaFighterSupport' | translate}}
+            <div>
+                <label style="display: block" for="userBasicDetails_unti">{{'whichUnitQuestion' | translate}}</label>
+                <input  type="radio"  name="whichUnitAnswerPalsar" value="{{'whichUnitAnswerPalsar' |  translate}}" ng-model="formData.unit">
+                {{'whichUnitAnswerPalsar' | translate}}
+            </div>
+            <div>
+                <input type="radio" name="whichUnitAnswerOrev" value="{{'whichUnitAnswerOrev' |  translate}}" ng-model="formData.unit">
+                {{'whichUnitAnswerOrev' | translate}}
+            </div>
+            <div>
+                <input type="radio" name="whichUnitAnswerHan" value="{{'whichUnitAnswerHan' |  translate}}" ng-model="formData.unit">
+                {{'whichUnitAnswerHan' | translate}}
+            </div>
+           <div>
+               <input type="radio" name="whichUnitAnswerMifkadaFighter" value="{{'whichUnitAnswerMifkadaFighter' |  translate}}" ng-model="formData.unit">
+               {{'whichUnitAnswerMifkadaFighter' | translate}}
+           </div>
+            <div>
+                <input type="radio" name="whichUnitAnswerMifkadaFighterSupport" value="{{'whichUnitAnswerMifkadaFighterSupport' |  translate}}" ng-model="formData.unit">
+                {{'whichUnitAnswerMifkadaFighterSupport' | translate}}
+            </div>
+
         </div>
 
         <div class="form-group col-md-3 col-sm-12">
