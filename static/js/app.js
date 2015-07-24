@@ -51,6 +51,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             general_requieredFieldAlertText:'שדה חובה',
             general_yes: 'כן',
             general_no: 'לא',
+            general_close:'סגירה',
             general_male:'זכר',
             general_female:'נקבה',
             general_phone: 'טלפון',
@@ -155,11 +156,19 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             studentLivingHome_parents_number_of_people_current_studing_place: 'לא עובדת ',
             studentLivingHome_parents_number_of_people_current_studing_place: 'מקום לימודים נוכחי',
             studentLivingHome_parents_status_not_working_mother: 'לא עובדת ',
+            submitButtonText: 'שליחת הטופס',
+            modalSuccessTitle: 'שליחת הטופס',
+            modalSuccessText: '.שליחת הטופס התבצעה בהצלחה',
+            modalFailText: 'שליחת הטופס נכשלה , אנא נסה\\י במועד מאוחר יותר ...',
+            submitButtonText: 'שליחת הטופס',
+            submitButtonText: 'שליחת הטופס',
+            submitButtonText: 'שליחת הטופס',
             submitButtonText: 'שליחת הטופס'
+
         });
         $translateProvider.preferredLanguage('heb');
 })
-    .controller('appCtrl', ['$scope', '$timeout' , '$http' , '$translate', function($scope,$timeout,$http,$translate) {
+    .controller('appCtrl', ['$scope', '$timeout' , '$http' , '$translate', '$modal' , '$log', function($scope,$timeout,$http,$translate,$modal,$log) {
 
     $scope.formData = {};
     var restCallManager = new RestCallManager();
@@ -219,10 +228,9 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
                 restCallManager.post(submitFormCallback , $http, $scope.formData , "submitForm");
                 function submitFormCallback(result , status , success) {
                     if (success) {
-                        console.log(result);
-
+                        $scope.openSuccessModal();
                     } else {
-                        console.log("Error Getting Campaign Type " + status);
+                        $scope.openFailModal();
                     }
                 }
                 console.log($scope.formData);
@@ -231,6 +239,42 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
 
 
         }
+
+
+        $scope.openSuccessModal = function(){
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'static/views/modals/submitSuccess.html',
+                controller: 'ModalInstanceCtrl',
+                size: 'md'
+
+            });
+
+            modalInstance.result.then(function () {
+
+            }, function () {
+
+            });
+        }
+
+        $scope.openFailModal = function(){
+            var modalInstance = $modal.open({
+                animation: true,
+                templateUrl: 'static/views/modals/submitSuccess.html',
+                controller: 'ModalInstanceCtrl',
+                size: 'md'
+
+            });
+
+            modalInstance.result.then(function () {
+
+            }, function () {
+
+            });
+        }
+
+
+
 
         $scope.dateOptions = {
             formatYear: 'yy',
@@ -242,4 +286,12 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
 
 
 
-    }]);
+    }]).controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+        $scope.ok = function () {
+            $modalInstance.close();
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });

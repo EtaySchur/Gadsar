@@ -10,18 +10,14 @@ class DbManager {
 
 	private static function connectToDb() {
 
-    /* EC2 */
+   
+        $configuration = parse_ini_file("/etc/config.ini");
 
-        $dbpass = 'Avishaynimni88';
-        $dbhost = '127.0.0.1';
-        $dbname = 'Gadsar';
-        $dbuser = 'etay';
+        $dbpass = $configuration['dbPassword'];
+        $dbhost = $configuration['dbHost'];
+        $dbname = $configuration['dbName'];
+        $dbuser = $configuration['dbUserName'];
 
-         //LOCAL
-		//$dbpass = 'Kulanu$namut09';
-		//$dbhost = 'localhost';
-		////$dbname = 'Gadsar';
-		//$dbuser = 'root';
 		$pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass ,  array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 		return $pdo;
 	}
