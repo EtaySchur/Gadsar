@@ -10,7 +10,7 @@ class DbManager {
 
 	private static function connectToDb() {
 
-   
+
         $configuration = parse_ini_file("/etc/config.ini");
 
         $dbpass = $configuration['dbPassword'];

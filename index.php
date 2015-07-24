@@ -58,6 +58,7 @@
     <p class="col-md-12">{{'pageCommentPage12' | translate}} </p>
 
     <p class="col-md-12">{{'pageCommentPage13' | translate}} </p>
+    <h4 style="margin-top: 20px;margin-bottom: 20px" class="col-md-12"><b>{{'nextInterviewText' | translate}}</b> </h4>
 </div>
 
 <div ng-enter="submitMe(formData)" style="direction: rtl" class="container-fluid">
