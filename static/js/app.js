@@ -161,10 +161,12 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             modalSuccessText: '.שליחת הטופס התבצעה בהצלחה',
             modalFailText: 'שליחת הטופס נכשלה , אנא נסה\\י במועד מאוחר יותר ...',
             nextInterviewText: " . ראיונות ראשונים יהיו בתאריך 2.8.2015 בשעה 19:00 במשרד עורך דין חגי אברהמי - שד' שאול המלך 39 , בית הדר דפנה - בניין בי קומה 7 - תל אביב *",
-            submitButtonText: 'שליחת הטופס',
-            submitButtonText: 'שליחת הטופס',
-            submitButtonText: 'שליחת הטופס'
-
+            whichUnitQuestion: 'באיזה יחידת משנה שירתת ?',
+            whichUnitAnswerPalsar: 'סיירת',
+            whichUnitAnswerOrev: 'עורב',
+            whichUnitAnswerHan: 'פלח"ן',
+            whichUnitAnswerMifkadaFighter: 'מפקדה - לוחם',
+            whichUnitAnswerMifkadaFighterSupport: 'מפקדה - תומך לחימה'
         });
         $translateProvider.preferredLanguage('heb');
 })
