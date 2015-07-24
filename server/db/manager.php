@@ -14,9 +14,9 @@ class DbManager {
 
         $dbpass = 'Avishaynimni88';
         $dbhost = '127.0.0.1';
-        $dbname = 'GadsarGolani';
+        $dbname = 'Gadsar';
         $dbuser = 'etay';
-        
+
          //LOCAL
 		//$dbpass = 'Kulanu$namut09';
 		//$dbhost = 'localhost';
