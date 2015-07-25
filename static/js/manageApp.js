@@ -6,6 +6,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
     .config(function($translateProvider) {
         $translateProvider.translations('heb', {
              userLogin:'שם משתמש (כתובת אי מייל)',
+             logOutButtonText:'יציאה מהמערכת',
              userPassword:'',
              appTitle:'מערכת ניהול טפסים - גדס"ר גולני',
              deleteButtonText:'מחיקת טופס',
@@ -90,7 +91,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         });
         $translateProvider.preferredLanguage('heb');
     })
-    .controller('manageCtrl', ['$scope', '$timeout' , '$http' , '$translate', '$modal' , '$log', function($scope,$timeout,$http,$translate,$modal,$log) {
+    .controller('manageCtrl', ['$scope', '$timeout' , '$http' , '$translate', '$modal' , '$log' , '$window', function($scope,$timeout,$http,$translate,$modal,$log,$window) {
 
         $translate([
             'studentLivingHome_parents_details_mother_working',
@@ -140,6 +141,13 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
               }
             } else {
 
+            }
+        }
+
+        $scope.logOut = function(){
+            restCallManager.post(logOutCallback , $http, null , "logOut");
+            function logOutCallback(result , status , success) {
+                $window.location.reload();
             }
         }
 
@@ -214,7 +222,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
                 if (success) {
                     console.log("Result ", result);
                    if(result.length > 0){
-                       //$window.location.reload();
+                       $window.location.reload();
                        $scope.loginError = false;
                    }
                 } else {

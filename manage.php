@@ -5,7 +5,7 @@
  * Date: 7/24/15
  * Time: 10:20 PM
  */
-var_dump($_COOKIE);
+
 ?>
 <!doctype html>
 <html ng-app="manageApp">
@@ -50,6 +50,7 @@ var_dump($_COOKIE);
         </div>
         <div style="text-align: right" class="col-xs-8">
             <button ng-click="openDeleteDialog()" class="btn btn-danger">{{'deleteButtonText' | translate}} </button>
+            <button style="float: left" ng-click="logOut()" class="btn btn-info">{{'logOutButtonText' | translate}} </button>
         </div>
     </div>
 
