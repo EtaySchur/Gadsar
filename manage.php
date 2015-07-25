@@ -538,7 +538,7 @@
                             <label for="exampleInputPassword1">סיסמא</label>
                             <input ng-model="formData.userPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="הכנס סיסמא">
                         </div>
-                        <p ng-show="loginError == true"> שם המשתמש או הסיסמא לא נכונים , נסה שוב</p>
+                        <p class="error" ng-show="loginError == true"> שם המשתמש או הסיסמא לא נכונים , נסה שוב</p>
                         <button ng-click="login(formData)" type="submit" class="btn btn-default">Submit</button>
                     </form>
                 </div>

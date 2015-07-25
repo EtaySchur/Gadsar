@@ -224,9 +224,12 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
                    if(result.length > 0){
                        $window.location.reload();
                        $scope.loginError = false;
+                   }else{
+                       $scope.loginError = true;
                    }
                 } else {
-                    $scope.loginError = true;
+                    console.log("Errorrrr");
+
                 }
             }
         }
