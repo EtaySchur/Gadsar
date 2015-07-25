@@ -24,7 +24,7 @@ if (($_POST) || (isset($_POST))) {
 
 
                              $result = DbManager::login($request->data);
-                             var_dump($result); exit;
+
                              if(count($result) > 0){
                                //  $cookie =  md5(time());
                                  setcookie('user',  'fuad', time()+3600); // notice time() function
