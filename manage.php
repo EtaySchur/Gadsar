@@ -247,17 +247,244 @@
                         <span style="margin-left: 5px">:</span>
                         <span> {{selectedForm.jobDetails_salary_fundingAmount  || "-"}} </span>
                     </div>
+                    <div ng-if="selectedForm.jobDetails_salary_fundingQuestion == general_yes">
+                        <span style="margin-left: 5px"> {{'jobDetails_salary_fundingSourceQuestion' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.jobDetails_salary_fundingSourceQuestion  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.jobDetails_salary_fundingQuestion == general_yes && selectedForm.jobDetails_salary_SourceQuestion_otherAnswerDetails == otherKeyWord">
+                        <span style="margin-left: 5px"> {{'jobDetails_salary_fundingSourceAnswer7' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.jobDetails_salary_SourceQuestion_otherAnswerDetails  || "-"}} </span>
+                    </div>
                 </accordion-group>
-                <accordion-group heading="Dynamic Body Content">
-                    <p>The body of the accordion group grows to fit the contents</p>
-                    <button class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
-                    <div ng-repeat="item in items">{{item}}</div>
+                <accordion-group heading="{{'familyStatusDetailsAccordion' | translate}}">
+                    <div>
+                        <span style="margin-left: 5px"> {{'familyStatusDetailsAccordion' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marriedStatus  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_divorced">
+                        <span style="margin-left: 5px"> {{'family_status_answer_divorced_payed_title' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.paying  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_divorced">
+                        <span style="margin-left: 5px"> {{'jobDetails_salary_depths_amount' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.mezunutAmount  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == otherKeyWord">
+                        <span style="margin-left: 5px"> {{'jobDetails_salary_fundingSourceAnswer7' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marridStatusOtherDetails  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_children && selectedForm.marriedChildName1 != null">
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 5px"> {{selectedForm.marriedChildAge1  || "-"}} </span>
+                        <span style="margin-left: 5px"> , </span>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_age' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marriedChildName1  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_children && selectedForm.marriedChildName2 != null">
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 5px"> {{selectedForm.marriedChildAge2  || "-"}} </span>
+                        <span style="margin-left: 5px"> , </span>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_age' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marriedChildName2  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_children && selectedForm.marriedChildName3 != null">
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 5px"> {{selectedForm.marriedChildAge3  || "-"}} </span>
+                        <span style="margin-left: 5px"> , </span>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_age' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marriedChildName3  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.marriedStatus == family_status_answer_children && selectedForm.marriedChildName4 != null">
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 5px"> {{selectedForm.marriedChildAge4  || "-"}} </span>
+                        <span style="margin-left: 5px"> , </span>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_age' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.marriedChildName4  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.partnerForLifeId != null">
+                        <span style="margin-left: 5px"> {{'family_status_partner_for_life_id' | translate}} </span>
+                        <span> {{selectedForm.partnerForLifeId  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.partnerForLifeId != null">
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name1' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.partnerForLifeName  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_partner_for_life_job' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.partnerForLifeJob  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.partnerForLifeJob != family_status_partner_for_life_job_not_working">
+                        <span style="margin-left: 5px"> {{'jobDetails_jobLocation' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.partnerForLifeJobLocation  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.partnerForLifeJob != family_status_partner_for_life_job_not_working">
+                        <span style="margin-left: 5px"> {{'family_status_partner_for_life_job_pay' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.partnerForLifeJobSalary  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.partnerForLifeJob == family_status_partner_for_life_job_not_working">
+                        <span style="margin-left: 5px"> {{'general_reason' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.partnerForLifeNotWorkingDetails  || "-"}} </span>
+                    </div>
                 </accordion-group>
                 <accordion-group is-open="status.open">
                     <accordion-heading>
-                        I can have markup, too! <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        {{'homyStudentDetailsAccordionTitle' | translate}}
                     </accordion-heading>
-                    This is just some content to illustrate fancy headings.
+                    <div>
+                        <span style="margin-left: 5px"> {{'studingDetails_city' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.studingDetailsCity  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'studingDetails_address' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.studingDetailsAddress  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'studingDetails_zip' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.studingDetailsZip  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'general_phone' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.studingDetailsPhone  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'general_phone' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.studingDetailsPhone  || "-"}} </span>
+                    </div>
+                    <h3> {{'studentLivingHome_parents_details' | translate}} </h3>
+                    <h4>  {{'studentLivingHome_parents_details_father' | translate}} </h4>
+                    <div>
+                        <span style="margin-left: 5px"> {{'general_status' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.fatherJob  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.fatherJob ==  family_status_partner_for_life_answer1 || selectedForm.fatherJob ==  family_status_partner_for_life_answer2">
+                        <span style="margin-left: 5px"> {{'jobDetails_jobLocation' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.fatherJobLocation  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.fatherJob ==  family_status_partner_for_life_answer1 || selectedForm.fatherJob ==  family_status_partner_for_life_answer2">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_status_monthly_incoming' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.fatherJobSalary  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.fatherJob ==  studentLivingHome_parents_status_divorced_father">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_status_divorced_date' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.fatherDivorcedDate  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.fatherJob ==  studentLivingHome_parents_job_diss">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_job_diss_date' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.fatherDissDate  || "-"}} </span>
+                    </div>
+
+                    <h4>  {{'studentLivingHome_parents_details_mother' | translate}} </h4>
+
+                    <div>
+                        <span style="margin-left: 5px"> {{'general_status' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.motherJob  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.motherJob ==  studentLivingHome_parents_details_mother_working || selectedForm.motherJob ==  studentLivingHome_parents_details_mother_independent">
+                        <span style="margin-left: 5px"> {{'jobDetails_jobLocation' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.motherJobLocation  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.motherJob ==  studentLivingHome_parents_details_mother_working || selectedForm.motherJob ==  studentLivingHome_parents_details_mother_independent">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_status_monthly_incoming' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.motherJobSalary  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.motherJob ==  studentLivingHome_parents_status_divorced_mother">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_status_divorced_date' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.motherDivorcedDate  || "-"}} </span>
+                    </div>
+                    <div ng-if="selectedForm.motherJob ==  studentLivingHome_parents_job_diss_mother">
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_job_diss_date' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.motherDissDate  || "-"}} </span>
+                    </div>
+                    <h3> {{'studentLivingHome_parents_number_of_people_title' | translate }}</h3>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyName1  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'general_birthDate' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyBirthDate1  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_number_of_people_current_studing_place' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.supportedFamilyStudyLocation1  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyName2  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'general_birthDate' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyBirthDate2  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_number_of_people_current_studing_place' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.supportedFamilyStudyLocation2  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyName3  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'general_birthDate' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyBirthDate3  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_number_of_people_current_studing_place' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.supportedFamilyStudyLocation3  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyName4  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'general_birthDate' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyBirthDate4  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_number_of_people_current_studing_place' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.supportedFamilyStudyLocation4  || "-"}} </span>
+                    </div>
+                    <div>
+                        <span style="margin-left: 5px"> {{'family_status_answer_children_comment_name' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyName5  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'general_birthDate' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span style="margin-left: 15px"> {{selectedForm.supportedFamilyBirthDate5  || "-"}} </span>
+                        <span style="margin-left: 5px"> {{'studentLivingHome_parents_number_of_people_current_studing_place' | translate}} </span>
+                        <span style="margin-left: 5px">:</span>
+                        <span> {{selectedForm.supportedFamilyStudyLocation5  || "-"}} </span>
+                    </div>
                 </accordion-group>
             </accordion>
         </div>

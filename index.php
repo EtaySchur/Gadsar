@@ -374,7 +374,7 @@
                        ng-model="formData.jobDetails_salary_fundingSourceQuestion">
                 {{'jobDetails_salary_fundingSourceAnswer7' | translate}}
             </div>
-            <input ng-if="formData.jobDetails_salary_fundingSourceQuestion == keyWordOther" type="text" class="form-control"
+            <input ng-model="formData.jobDetails_salary_SourceQuestion_otherAnswerDetails" ng-if="formData.jobDetails_salary_fundingSourceQuestion == keyWordOther" type="text" class="form-control"
                    id="jobDetails_salary_fundingSourceAnswer7" placeholder="">
 
             <p ng-if="formData.jobDetails_salary_fundingSourceQuestion == keyWordOther"> {{'jobDetails_salary_fundingSourceAnswerComment' | translate}}</p>

@@ -7,6 +7,8 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         $translateProvider.translations('heb', {
              basicDetailsAccordionTitle:"פרטים בסיסים",
              studyingDetailsAccordionTitle:"פרטים על תקופת הלימודים",
+             familyStatusDetailsAccordion:'סטטוס משפחתי',
+             homyStudentDetailsAccordionTitle:'פרטי סטודנט עד גיל 27 המתגורר בבית הוריו',
              userBasicDetails_id: 'ת.ז.',
              userBasicDetails_bornCountry: ' ארץ לידה',
              userBasicDetails_fullName: 'שם + שם משפחה',
@@ -19,7 +21,10 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
              userAdvDetails_numberOfDays: "מס' ימים ?",
              general_phone: 'טלפון',
              general_yes: 'כן',
+             general_status:'סטטוס',
              general_no: 'לא',
+             studentLivingHome_parents_status_monthly_incoming: ' שכר חודשי:',
+             general_reason:'סיבה לחוסר עבודה',
              general_howManyTimes: 'כמה פעמים ?',
              studingDetails_city: 'היישוב',
              studingDetails_address: 'כתובת',
@@ -47,6 +52,34 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
              jobDetails_salary_depths_time: 'הזמן שנותר לסיום',
              jobDetails_salary_fundingQuestion: 'האם הנך מקבל מימון כלשהו ?',
              jobDetails_salary_depths_amount: 'על סך',
+             jobDetails_salary_fundingSourceQuestion: 'ציין את מקור המימון',
+             jobDetails_salary_fundingSourceAnswer7: 'אחר',
+             family_status_answer_divorced: 'גרוש/ה.',
+             family_status_answer_divorced_payed_title: 'דמי מזונות',
+             family_status_answer_children: 'נשוי/אה עם ילדים. ',
+             family_status_answer_children_comment_name1: 'שם של בן/ת הזוג',
+             family_status_answer_children_comment_name: ' שם',
+             family_status_answer_children_comment_age: 'גיל',
+             family_status_partner_for_life_id: 'ת.ז. של בן/ת הזוג  (כולל ספרת ביקורת):',
+             family_status_partner_for_life_job: 'סוג העבודה של הבן\\ת זוג:',
+             family_status_partner_for_life_job_pay: 'שכר חודשי של בן/ת הזוג:',
+             family_status_partner_for_life_answer1: 'שכיר',
+             family_status_partner_for_life_answer2: 'עצמאי',
+             family_status_partner_for_life_job_not_working: 'אינו עובד',
+             studentLivingHome_parents_details: 'פרטים על ההורים:',
+             studentLivingHome_parents_details_father: 'אב',
+             studentLivingHome_parents_details_mother: 'אם',
+             studentLivingHome_parents_details_mother_working: 'שכירה',
+             studentLivingHome_parents_details_mother_independent: 'עצמאית',
+             studentLivingHome_parents_job_diss: 'נפטר',
+             studentLivingHome_parents_job_diss_mother: 'נפטרה',
+             studentLivingHome_parents_job_diss_date: 'תאריך פטירה:',
+             studentLivingHome_parents_status_divorced_father: 'גרוש',
+             studentLivingHome_parents_status_divorced_mother: 'גרושה',
+             studentLivingHome_parents_status_divorced_date: 'תאריך גירושין:',
+             studentLivingHome_parents_number_of_people_title: 'מספר נפשות נתמכות בבית עד גיל 21:',
+             general_birthDate: 'תאריך לידה',
+             studentLivingHome_parents_number_of_people_current_studing_place: 'מקום לימודים נוכחי',
              armyServiceReleasingDate:'תאריך שחרור'
         });
         $translateProvider.preferredLanguage('heb');
@@ -54,9 +87,35 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
     .controller('manageCtrl', ['$scope', '$timeout' , '$http' , '$translate', '$modal' , '$log', function($scope,$timeout,$http,$translate,$modal,$log) {
 
         $translate([
+            'studentLivingHome_parents_details_mother_working',
+            'studentLivingHome_parents_details_mother_independent',
+            'studentLivingHome_parents_status_divorced_mother',
+            'studentLivingHome_parents_status_divorced_father',
+            'studentLivingHome_parents_job_diss_date',
+            'studentLivingHome_parents_job_diss_mother',
+            'studentLivingHome_parents_job_diss',
+            'family_status_partner_for_life_job_not_working',
+            'family_status_partner_for_life_answer1',
+            'family_status_partner_for_life_answer2',
+            'family_status_answer_children',
+            'family_status_answer_divorced',
+            'jobDetails_salary_fundingSourceAnswer7',
             'jobDetails_hasJobAnswer1',
             'general_yes',
             'general_no']).then(function (translations) {
+            $scope.studentLivingHome_parents_details_mother_working = translations.studentLivingHome_parents_details_mother_working;
+            $scope.studentLivingHome_parents_details_mother_independent = translations.studentLivingHome_parents_details_mother_independent;
+            $scope.studentLivingHome_parents_status_divorced_mother = translations.studentLivingHome_parents_status_divorced_mother;
+            $scope.studentLivingHome_parents_status_divorced_father = translations.studentLivingHome_parents_status_divorced_father;
+            $scope.studentLivingHome_parents_job_diss_date = translations.studentLivingHome_parents_job_diss_date;
+            $scope.studentLivingHome_parents_job_diss_mother = translations.studentLivingHome_parents_job_diss_mother;
+            $scope.studentLivingHome_parents_job_diss = translations.studentLivingHome_parents_job_diss;
+            $scope.family_status_partner_for_life_job_not_working = translations.family_status_partner_for_life_job_not_working;
+            $scope.family_status_partner_for_life_answer1 = translations.family_status_partner_for_life_answer1;
+            $scope.family_status_partner_for_life_answer2 = translations.family_status_partner_for_life_answer2;
+            $scope.family_status_answer_children = translations.family_status_answer_children;
+            $scope.family_status_answer_divorced = translations.family_status_answer_divorced;
+            $scope.otherKeyWord = translations.jobDetails_salary_fundingSourceAnswer7;
             $scope.jobDetails_hasJobAnswer1 = translations.jobDetails_hasJobAnswer1;
             $scope.general_yes = translations.general_yes;
             $scope.general_no = translations.general_no;
