@@ -5,6 +5,11 @@
 angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnimate'])
     .config(function($translateProvider) {
         $translateProvider.translations('heb', {
+             userLogin:'שם משתמש (כתובת אי מייל)',
+             userPassword:'',
+             appTitle:'מערכת ניהול טפסים - גדס"ר גולני',
+             deleteButtonText:'מחיקת טופס',
+             deleteModalText:'האם למחוק את הטופס ?',
              basicDetailsAccordionTitle:"פרטים בסיסים",
              studyingDetailsAccordionTitle:"פרטים על תקופת הלימודים",
              familyStatusDetailsAccordion:'סטטוס משפחתי',
@@ -78,6 +83,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
              studentLivingHome_parents_status_divorced_mother: 'גרושה',
              studentLivingHome_parents_status_divorced_date: 'תאריך גירושין:',
              studentLivingHome_parents_number_of_people_title: 'מספר נפשות נתמכות בבית עד גיל 21:',
+             general_close:'ביטול',
              general_birthDate: 'תאריך לידה',
              studentLivingHome_parents_number_of_people_current_studing_place: 'מקום לימודים נוכחי',
              armyServiceReleasingDate:'תאריך שחרור'
@@ -148,6 +154,35 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
             return day+"/"+month+"/"+year;
         }
 
+        $scope.openDeleteDialog = function(){
+            console.log("opening?");
+            var modalInstance = $modal.open({
+                animation: false,
+                templateUrl: 'static/views/modals/deleteForm.html',
+                controller: 'ModalCtrl',
+                size: 'md'
+
+            });
+
+            modalInstance.result.then(function () {
+                restCallManager.post(deleteFormCallback , $http, { id : $scope.selectedForm.id } , "deleteForm");
+                function deleteFormCallback(result , status , success) {
+                    if (success) {
+                        var index = $scope.forms.indexOf($scope.selectedForm);
+                        $scope.forms.splice( index , 1);
+
+                        if($scope.forms.length > 0){
+                            $scope.selectedForm = $scope.forms[0];
+                        }
+                    } else {
+
+                    }
+                }
+            }, function () {
+
+            });
+        }
+
         $scope.translateMe = function(text){
             console.log(text);
             switch (text) {
@@ -166,26 +201,34 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
 
         $scope.oneAtATime = true;
 
-        $scope.groups = [
-            {
-                title: 'Dynamic Group Header - 1',
-                content: 'Dynamic Group Body - 1'
-            },
-            {
-                title: 'Dynamic Group Header - 2',
-                content: 'Dynamic Group Body - 2'
-            }
-        ];
-
-        $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
-        $scope.addItem = function() {
-            var newItemNo = $scope.items.length + 1;
-            $scope.items.push('Item ' + newItemNo);
-        };
 
         $scope.status = {
             isFirstOpen: true,
             isFirstDisabled: false
         };
-    }]);
+    }]).controller('loginCtrl', function ($scope , $http , $window) {
+        $scope.login = function (formData){
+            var restCallManager = new RestCallManager();
+            restCallManager.post(loginCallback , $http, formData , "login");
+            function loginCallback(result , status , success) {
+                if (success) {
+                    console.log("Result ", result);
+                   if(result.length > 0){
+                       //$window.location.reload();
+                       $scope.loginError = false;
+                   }
+                } else {
+                    $scope.loginError = true;
+                }
+            }
+        }
+    })
+    .controller('ModalCtrl', function ($scope, $modalInstance) {
+        $scope.ok = function (result) {
+            $modalInstance.close(result);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });

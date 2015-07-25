@@ -20,9 +20,29 @@ if (($_POST) || (isset($_POST))) {
                             $result = DbManager::insertToDb("forms" , $request->data);
                             echo json_encode($result);
                             exit;
+        case "login"      :
+
+
+                             $result = DbManager::login($request->data);
+
+                             if(count($result) > 0){
+                               //  $cookie =  md5(time());
+                                 setcookie('user',  'fuad', time()+3600); // notice time() function
+                                 setcookie('pass',  'fuad', time()+3600); // you cant use absolute value here
+                                 setcookie("gadsarUserCookie", "fuad", time()+3600*6);  /* expire in 1 hour */
+                             }
+
+                             echo json_encode($result);
+                             exit;
+        case "deleteForm" : $result = DbManager::deleteForm($request->data->id);
+                            echo json_encode($result);
+                            exit;
+
+
         case "getForms" : $result = DbManager::getForms();
                           echo json_encode($result);
                           exit;
+
     }
 }
 ?>

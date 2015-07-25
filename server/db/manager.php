@@ -24,13 +24,45 @@ class DbManager {
 
     public static function getForms(){
         $conn = self::connectToDb();
-        $sql = $conn->prepare("SELECT * from `forms` ORDER BY creationDate DESC");
+        $sql = $conn->prepare("SELECT * from `forms`  WHERE `isDeleted` = 0 ORDER BY creationDate DESC");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
         exit;
 
     }
+
+    public static function setUserCookie($userId , $cookie){
+
+    }
+
+    public static function login($data){
+        $userLogin = ($data->userLogin);
+        $userPassword = md5($data->userPassword);
+
+        $conn = self::connectToDb();
+        $sql = $conn->prepare("SELECT * from `adminUsers`
+                               WHERE `userLogin`  = :userLogin
+                               AND  `userPassword`  = :userPassword
+                               ");
+        $sql->bindParam('userLogin', $userLogin);
+        $sql->bindParam('userPassword', $userPassword);
+        $sql->execute();
+        $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+    public static function deleteForm($formId){
+        $conn = self::connectToDb();
+        $sql = "UPDATE `forms` SET `isDeleted` = 1 WHERE id=$formId";
+        $stmt = $conn->query($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+        exit;
+
+    }
+
 
 
     /* Generic Section */
