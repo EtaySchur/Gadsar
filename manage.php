@@ -58,7 +58,7 @@
 <div  style="direction: rtl" class="container-fluid">
 <div style="height: 70vh" class="row">
 <div style="height: 100%" class="col-md-4 col-xs-4">
-    <div style="height: 100%;overflow-x:hidden;overflow: scroll" class="list-group">
+    <div style="height: 100%;overflow: auto;overflow-x:hidden;" class="list-group">
         <a ng-click="selectMe(form)" ng-class="{'active': selectedForm.id == form.id}" ng-repeat="form in forms | filter:query" href="#" class="list-group-item">
             <span> {{form.userFullName}}</span>
             <span style="float: left;"> {{form.unit}}</span>
