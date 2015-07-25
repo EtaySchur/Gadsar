@@ -39,7 +39,7 @@ class DbManager {
     public static function login($data){
         $userLogin = ($data->userLogin);
         $userPassword = md5($data->userPassword);
-        var_dump($userPassword); exit;
+
         $conn = self::connectToDb();
         $sql = $conn->prepare("SELECT * from `adminUsers`
                                WHERE `userLogin`  = :userLogin
