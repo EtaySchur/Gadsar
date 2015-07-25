@@ -334,7 +334,7 @@
         </div>
         <div ng-if="formData.jobDetails_salary_fundingQuestion == general_yes" class="form-group col-md-3 col-sm-12">
             <label for="jobDetails_salary_depths_amount">{{'jobDetails_salary_depths_amount' | translate}}</label>
-            <input type="text" class="form-control" id="jobDetails_salary_depths_amount" placeholder="">
+            <input ng-model="formData.jobDetails_salary_fundingAmount" type="text" class="form-control" id="jobDetails_salary_depths_amount" placeholder="">
         </div>
         <div ng-if="formData.jobDetails_salary_fundingQuestion == general_yes" class="form-group col-md-12 col-sm-12">
             <label style="display: block" for="jobDetails_salary_fundingSourceQuestion">{{'jobDetails_salary_fundingSourceQuestion' | translate}}</label>

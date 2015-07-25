@@ -24,7 +24,7 @@ class DbManager {
 
     public static function getForms(){
         $conn = self::connectToDb();
-        $sql = $conn->prepare("SELECT * from `forms`");
+        $sql = $conn->prepare("SELECT * from `forms` ORDER BY creationDate DESC");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
         return $result;
