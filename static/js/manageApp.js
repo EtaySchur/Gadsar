@@ -163,7 +163,6 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         }
 
         $scope.openDeleteDialog = function(){
-            console.log("opening?");
             var modalInstance = $modal.open({
                 animation: false,
                 templateUrl: 'static/views/modals/deleteForm.html',
@@ -220,7 +219,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
             restCallManager.post(loginCallback , $http, formData , "login");
             function loginCallback(result , status , success) {
                 if (success) {
-                    console.log("Result ", result);
+
                    if(result.length > 0){
                        $window.location.reload();
                        $scope.loginError = false;
@@ -228,7 +227,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
                        $scope.loginError = true;
                    }
                 } else {
-                    console.log("Errorrrr");
+
 
                 }
             }

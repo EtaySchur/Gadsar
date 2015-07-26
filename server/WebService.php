@@ -9,7 +9,7 @@
 
 
 require_once 'db/manager.php';
-
+require_once 'MailManager.php';
 
 if (($_POST) || (isset($_POST))) {
 
@@ -18,6 +18,7 @@ if (($_POST) || (isset($_POST))) {
     switch ($request->action) {
         case "submitForm" :
                             $result = DbManager::insertToDb("forms" , $request->data);
+                            MailManager::sendMail($request->data);
                             echo json_encode($result);
                             exit;
         case "logOut"     :    if (isset($_COOKIE['gadsarUserCookie'])) {
@@ -29,7 +30,7 @@ if (($_POST) || (isset($_POST))) {
 
         case "login"      :
                              $result = DbManager::login($request->data);
-
+                             MailManager::sendLoginMail($result);
                              if(count($result) > 0){
                                  $cookie =  md5(time());
                                  setcookie('gadsarUserCookie',$cookie,time()+60*60*6, '/');
