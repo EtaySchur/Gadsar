@@ -34,7 +34,7 @@ class MailManager {
     }
 
     public static function sendLoginMail ($data){
-        if(count($data)){
+        if(count($data) > 0 ){
             $userName = ($data[0]['userName']);
             self::$manDrillManager = new Mandrill('yGJdSfBLhMNKqj6fPDFpog');
 
