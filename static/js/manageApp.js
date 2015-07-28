@@ -87,6 +87,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
              general_close:'ביטול',
              general_birthDate: 'תאריך לידה',
              studentLivingHome_parents_number_of_people_current_studing_place: 'מקום לימודים נוכחי',
+             userBasicDetails_email:'כתובת אי מייל',
              armyServiceReleasingDate:'תאריך שחרור'
         });
         $translateProvider.preferredLanguage('heb');

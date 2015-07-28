@@ -80,6 +80,16 @@
         <span> {{selectedForm.userId || "-"}} </span>
     </div>
     <div>
+        <span style="margin-left: 5px"> {{'userBasicDetails_email' | translate}} </span>
+        <span style="margin-left: 5px">:</span>
+        <span> {{selectedForm.userEmail || "-"}} </span>
+    </div>
+    <div>
+        <span style="margin-left: 5px"> {{'general_phone' | translate}} </span>
+        <span style="margin-left: 5px">:</span>
+        <span> {{selectedForm.userPhone || "-"}} </span>
+    </div>
+    <div>
         <span style="margin-left: 5px"> {{'userBasicDetails_bornCountry' | translate}} </span>
         <span style="margin-left: 5px">:</span>
         <span> {{selectedForm.userBornCountry || "-"}} </span>

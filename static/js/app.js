@@ -166,6 +166,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             whichUnitAnswerOrev: 'עורב',
             whichUnitAnswerHan: 'פלח"ן',
             whichUnitAnswerMifkadaFighter: 'מפקדה - לוחם',
+            userBasicDetails_email:'כתובת אי מייל',
             whichUnitAnswerMifkadaFighterSupport: 'מפקדה - תומך לחימה'
         });
         $translateProvider.preferredLanguage('heb');
