@@ -51,6 +51,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
             general_requieredFieldAlertText:'שדה חובה',
             general_yes: 'כן',
             general_no: 'לא',
+            general_comments:'הערות',
             general_close:'סגירה',
             general_male:'זכר',
             general_female:'נקבה',
@@ -233,7 +234,7 @@ angular.module('app', ['pascalprecht.translate' , 'ui.bootstrap'])
                 function submitFormCallback(result , status , success) {
                     if (success) {
                         $scope.openSuccessModal();
-                        $scope.formData = {};
+                        //$scope.formData = {};
                     } else {
                         $scope.openFailModal();
                     }

@@ -42,3 +42,11 @@
     border-top-left-radius : 0 !important;
     border-bottom-left-radius : 0 !important;
 }
+
+.modal-lg {
+    width: 90% !important;
+}
+
+.editForm input {
+    text-align: right;
+}

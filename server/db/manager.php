@@ -19,6 +19,7 @@ class DbManager {
         $dbuser = $configuration['dbUserName'];
 
 		$pdo = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dbpass ,  array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+
 		return $pdo;
 	}
 
@@ -27,6 +28,37 @@ class DbManager {
         $sql = $conn->prepare("SELECT * from `forms`  WHERE `isDeleted` = 0 ORDER BY creationDate DESC");
         $sql->execute();
         $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+        exit;
+
+    }
+
+    public static function editForm($form){
+
+        $conn = self::connectToDb();
+        $sql = "UPDATE `forms` SET";
+        $comma = " ";
+        foreach($form as $key => $val) {
+
+            if( ! empty($val)) {
+                $sql .= $comma . $key . " = '" . (($val)) . "'";
+                $comma = ", ";
+            }
+        }
+        $sql .= "WHERE id = ".$form->id;
+
+        $stmt = $conn->query($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    public static function saveComments($comments , $formId){
+        $conn = self::connectToDb();
+        $sql = "UPDATE `forms` SET `comments` = $comments WHERE id=$formId";
+        $stmt = $conn->query($sql);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
         return $result;
         exit;
 

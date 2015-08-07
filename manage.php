@@ -13,18 +13,21 @@
 <head>
 
     <meta charset="utf-8"/>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="static/js/helpers.js"></script>
-
+    <script src="static/js/pnotify.custom.min.js"></script>
     <script src="static/js/angular.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="static/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="static/js/manageApp.js"></script>
 
+    <link type="text/css" rel="stylesheet" href="static/css/pnotify.custom.min.css"/>
     <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link type="text/css" rel="stylesheet" href="static/css/style.css"/>
+
 </head>
 <body style="padding-right: 100px;padding-left: 100px;padding-top: 50px">
 
@@ -45,11 +48,11 @@
             <div class="input-group searchBox">
                 <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
                 <input  ng-model="query.userFullName" type="text" class="form-control" placeholder="חיפוש ...">
-
             </div>
         </div>
         <div style="text-align: right" class="col-xs-8">
-            <button ng-click="openDeleteDialog()" class="btn btn-danger">{{'deleteButtonText' | translate}} </button>
+            <button style="margin-right :20px" ng-click="openDeleteDialog()" class="btn btn-danger">{{'deleteButtonText' | translate}} </button>
+            <button ng-click="openEditDialog()" class="btn btn-success">{{'general_edit' | translate}} </button>
             <button style="float: left" ng-click="logOut()" class="btn btn-info">{{'logOutButtonText' | translate}} </button>
         </div>
     </div>
@@ -522,6 +525,15 @@
         <span> {{selectedForm.supportedFamilyStudyLocation5  || "-"}} </span>
     </div>
 </accordion-group>
+    <accordion-group>
+        <accordion-heading>
+            {{'general_comments' | translate}}
+        </accordion-heading>
+        <div class="form-group">
+                <textarea rows="6" ng-model="selectedForm.comments" style="width: 100%;max-width: 100%" class="form-control"> </textarea>
+            </div>
+        <button style="float: right" ng-click="saveComments(selectedForm.comments)" class="btn btn-primary">{{'general_save' | translate}} </button>
+    </accordion-group>
 </accordion>
 </div>
 </div>

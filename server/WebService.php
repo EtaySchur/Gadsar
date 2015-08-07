@@ -14,7 +14,6 @@ require_once 'MailManager.php';
 if (($_POST) || (isset($_POST))) {
 
     $request = json_decode(file_get_contents("php://input"));
-
     switch ($request->action) {
         case "submitForm" :
                             $result = DbManager::insertToDb("forms" , $request->data);
@@ -47,6 +46,12 @@ if (($_POST) || (isset($_POST))) {
                           echo json_encode($result);
                           exit;
 
+        case "saveComments" : $result = DbManager::saveComments($request->data->comments , $request->data->formId);
+                              echo json_encode($result);
+                              exit;
+        case "editForm": $reulst = DbManager::editForm($request->data->form);
+                         echo json_encode($result);
+                         exit;
     }
 }
 ?>
