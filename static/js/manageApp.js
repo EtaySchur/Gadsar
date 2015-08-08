@@ -2,7 +2,7 @@
  * Created by etayschur on 7/24/15.
  */
 
-angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnimate'])
+angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnimate' , 'ngSanitize' , 'ngCsv'])
     .config(function($translateProvider) {
         $translateProvider.translations('heb', {
              userLogin:'שם משתמש (כתובת אי מייל)',
@@ -20,6 +20,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
              userBasicDetails_fullName: 'שם + שם משפחה',
              userBasicDetails_birthYear: 'שנת לידה',
              userBasicDetails_gender: 'מין',
+             export:'ייצוא לדו"ח אקסל',
              userBasicDetails_unit: 'יחידת משנה',
              armyServiceJoiningDate:'תאריך גיוס',
              userAdvDetails_miluimQuestion: 'האם במהלך השנה האחרונה שירתת במילואים?',
@@ -290,6 +291,17 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
 
         });
 
+        // EXPORT //
+        var exportManager = new ExportManager();
+        $scope.exportDelimiter = ",";
+        $scope.exportFileName = "Export.csv";
+        $scope.getHeader = function() {return angular.copy(exportManager.getHeaders())};
+        console.log("Headers ",$scope.getHeader);
+
+        //$scope.getArray = [{1: 1, 2:2}, {3:3, 4:4}];
+        // END OF EXPORT //
+
+
 
 
         var restCallManager = new RestCallManager();
@@ -297,8 +309,9 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         function getFormsCallback(result , status , success) {
             if (success) {
               $scope.forms = result;
-              console.log($scope.forms);
               if($scope.forms.length > 0){
+                  var exportManager = new ExportManager();
+                  $scope.getArray = exportManager.getCsvContents($scope.forms);
                   $scope.selectedForm = $scope.forms[0];
               }
             } else {
@@ -307,6 +320,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         }
 
         $scope.logOut = function(){
+
             restCallManager.post(logOutCallback , $http, null , "logOut");
             function logOutCallback(result , status , success) {
                 $window.location.reload();
@@ -324,7 +338,12 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
             return day+"/"+month+"/"+year;
         }
 
+        $scope.exportToCsv = function(){
+
+        }
+
         $scope.saveComments = function(comments){
+            var restCallManager = new RestCallManager();
             restCallManager.post(saveCommentCallback , $http, { comments : comments , formId : $scope.selectedForm.id } , "saveComments");
             function saveCommentCallback(result , status , success) {
                 if(success){
@@ -345,6 +364,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
             });
 
             modalInstance.result.then(function () {
+                var restCallManager = new RestCallManager();
                 restCallManager.post(deleteFormCallback , $http, { id : $scope.selectedForm.id } , "deleteForm");
                 function deleteFormCallback(result , status , success) {
                     if (success) {

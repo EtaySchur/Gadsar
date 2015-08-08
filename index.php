@@ -70,7 +70,7 @@
             <input ng-class="{'error': submitted && userBasicDetails.userId.$invalid}" name="userId" type="text" ng-model="formData.userId"class="form-control" id="userBasicDetails_id" placeholder="" required>
             <p class="errorText" ng-show="submitted && userBasicDetails.userId.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
-        <div class="form-group col-md-2 col-sm-12">
+        <div class="form-group col-md-1 col-sm-12">
             <label for="userBasicDetails_bornCountry">{{'userBasicDetails_bornCountry' | translate}}</label>
             <input type="text" ng-model="formData.userBornCountry" class="form-control" id="userBasicDetails_bornCountry" placeholder="">
         </div>
@@ -94,7 +94,7 @@
             <input ng-class="{'error': submitted && userBasicDetails.userBornYear.$invalid}" type="text" name="userBornYear" ng-model="formData.userBornYear" class="form-control" id="userBasicDetails_birthYear" placeholder="" required>
             <p class="errorText" ng-show="submitted && userBasicDetails.userBornYear.$invalid"> {{'general_requieredFieldAlertText' | translate}} </p>
         </div>
-        <div class="form-group col-md-1 col-sm-12">
+        <div class="form-group col-md-2 col-sm-12">
             <label style="display: block" for="userBasicDetails_gender">{{'userBasicDetails_gender' | translate}}</label>
             <input  type="radio"  name="gender" value="{{'general_male' |  translate}}" ng-model="formData.gender" required>
             {{'general_male' | translate}}
@@ -146,7 +146,7 @@
   <button type="button" class="btn btn-default" ng-click="openCalendar($event , 'releasingCalendar')"><i class="glyphicon glyphicon-calendar"></i></button>
               </span>
 
-                <input ng-model="formData.userReleasingArmyDate" style="width: 80%;display: inline-block" width="80%" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt"
+                <input ng-model="formData.userReleasingArmyDate" style="width: 80%;display: inline-block" width="80%" type="text" class="form-control" datepicker-popup="{{format}}"
                        show-button-bar="false" is-open="releasingCalendar" min-date="minDate"   date-disabled="disabled(date, mode)"
                        close-text="Close"/>
             </p>

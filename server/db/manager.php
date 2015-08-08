@@ -33,6 +33,10 @@ class DbManager {
 
     }
 
+    public static function exportToCsv(){
+        return ExportManager::exportCsv();
+    }
+
     public static function editForm($form){
 
         $conn = self::connectToDb();

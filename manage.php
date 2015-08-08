@@ -17,6 +17,8 @@
     <script src="static/js/helpers.js"></script>
     <script src="static/js/pnotify.custom.min.js"></script>
     <script src="static/js/angular.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="static/js/ng-csv-0.3.3/build/ng-csv.min.js"> </script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -51,9 +53,14 @@
             </div>
         </div>
         <div style="text-align: right" class="col-xs-8">
+            <button class="btn btn-default"
+                    ng-csv="getArray" csv-header="getHeader()" filename="{{ exportFileName }}" field-separator="{{exportDelimiter}}"
+                >Export to CSV with header</button>
+            <button  style="margin-right :20px" ng-click="exportToCsv()" class="btn btn-default">{{'export' | translate}} </button>
             <button style="margin-right :20px" ng-click="openDeleteDialog()" class="btn btn-danger">{{'deleteButtonText' | translate}} </button>
             <button ng-click="openEditDialog()" class="btn btn-success">{{'general_edit' | translate}} </button>
             <button style="float: left" ng-click="logOut()" class="btn btn-info">{{'logOutButtonText' | translate}} </button>
+
         </div>
     </div>
 

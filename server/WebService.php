@@ -10,7 +10,7 @@
 
 require_once 'db/manager.php';
 require_once 'MailManager.php';
-
+require_once 'export/ExportManager.php';
 if (($_POST) || (isset($_POST))) {
 
     $request = json_decode(file_get_contents("php://input"));
@@ -49,9 +49,15 @@ if (($_POST) || (isset($_POST))) {
         case "saveComments" : $result = DbManager::saveComments($request->data->comments , $request->data->formId);
                               echo json_encode($result);
                               exit;
-        case "editForm": $reulst = DbManager::editForm($request->data->form);
+        case "editForm": $result = DbManager::editForm($request->data->form);
                          echo json_encode($result);
                          exit;
+        case "exportToCsv":
+                           header('Content-Type: text/csv; charset=utf-8');
+                           header('Content-Disposition: attachment; filename=data.csv');
+                            $result = DbManager::exportToCsv();
+                            echo $result;
+                            exit;
     }
 }
 ?>
