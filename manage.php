@@ -53,10 +53,9 @@
             </div>
         </div>
         <div style="text-align: right" class="col-xs-8">
-            <button class="btn btn-default"
+            <button style="margin-right :20px" class="btn btn-default"
                     ng-csv="getArray" csv-header="getHeader()" filename="{{ exportFileName }}" field-separator="{{exportDelimiter}}"
-                >Export to CSV with header</button>
-            <button  style="margin-right :20px" ng-click="exportToCsv()" class="btn btn-default">{{'export' | translate}} </button>
+                >{{'export' | translate}}</button>
             <button style="margin-right :20px" ng-click="openDeleteDialog()" class="btn btn-danger">{{'deleteButtonText' | translate}} </button>
             <button ng-click="openEditDialog()" class="btn btn-success">{{'general_edit' | translate}} </button>
             <button style="float: left" ng-click="logOut()" class="btn btn-info">{{'logOutButtonText' | translate}} </button>

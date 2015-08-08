@@ -296,14 +296,8 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         $scope.exportDelimiter = ",";
         $scope.exportFileName = "Export.csv";
         $scope.getHeader = function() {return angular.copy(exportManager.getHeaders())};
-        console.log("Headers ",$scope.getHeader);
 
-        //$scope.getArray = [{1: 1, 2:2}, {3:3, 4:4}];
-        // END OF EXPORT //
-
-
-
-
+        // END OF EXPORT
         var restCallManager = new RestCallManager();
         restCallManager.post(getFormsCallback , $http, null , "getForms");
         function getFormsCallback(result , status , success) {
@@ -348,11 +342,16 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
             function saveCommentCallback(result , status , success) {
                 if(success){
                     alertManager.successAlert();
+                    if($scope.forms != undefined){
+                        $scope.getArray = exportManager.getCsvContents($scope.forms);
+                    }
                 }else{
 
                 }
             }
         }
+
+
 
         $scope.openDeleteDialog = function(){
             var modalInstance = $modal.open({
@@ -390,7 +389,7 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
                 controller: 'editModalCtrl',
                 resolve: {
                     form: function(){
-                        return angular.copy($scope.selectedForm);
+                        return ($scope.selectedForm);
                     }
                 },
                 size: 'lg'
@@ -399,10 +398,15 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
 
             modalInstance.result.then(function (form) {
                 $scope.selectedForm = form;
+                console.log("This is my forms ",$scope.forms);
                 restCallManager.post(editFormCallback , $http, { form : $scope.selectedForm } , "editForm");
                 function editFormCallback(result , status , success) {
                     if (success) {
                         alertManager.successAlert();
+                        if($scope.forms != undefined){
+                            console.log($scope.forms);
+                            $scope.getArray = exportManager.getCsvContents($scope.forms);
+                        }
                     } else {
                         alertManager.failAlert();
                     }
@@ -415,7 +419,6 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
         }
 
         $scope.translateMe = function(text){
-            console.log(text);
             switch (text) {
                 case $scope.general_no : return text;
                        break;
