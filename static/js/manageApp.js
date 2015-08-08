@@ -379,14 +379,12 @@ angular.module('manageApp', ['pascalprecht.translate' , 'ui.bootstrap' , 'ngAnim
 
             modalInstance.result.then(function (form) {
                 $scope.selectedForm = form;
-                console.log(form);
                 restCallManager.post(editFormCallback , $http, { form : $scope.selectedForm } , "editForm");
                 function editFormCallback(result , status , success) {
                     if (success) {
                         alertManager.successAlert();
-
                     } else {
-
+                        alertManager.failAlert();
                     }
                 }
             }, function () {

@@ -43,6 +43,14 @@ AlertManager.prototype.successAlert = function(){
 		type: 'success'
 	});
 }
+
+AlertManager.prototype.failAlert = function(){
+	new PNotify({
+		title: 'שמירת נתונים',
+		text: 'שמירת הנתונים נכשלה',
+		type: 'danger'
+	});
+}
 		
 
 
