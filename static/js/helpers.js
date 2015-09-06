@@ -56,6 +56,9 @@ ExportManager = function (){
 
 
 	this.csvArray = [
+        {
+            "creationDate": 'תאריך מילואי הטופס'
+        },
 		{
 			"userId": 'ת.ז.'
 		},
@@ -201,6 +204,7 @@ ExportManager.prototype.getHeaders = function(){
 	var headers = [];
 	this.csvArray.forEach(function(header){
 		headers.push(header[Object.keys(header)[0]]);
+        console.log(Object.keys(header)[0]);
 	});
 
 	return headers;
